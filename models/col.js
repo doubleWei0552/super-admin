@@ -1,8 +1,9 @@
-const db = require('../db');
+// 列信息
+const db = reuquire('../db');
 const mongoose = db.mongoose;
 const Schema = db.Schema;
 
-const goodsTypeSchema = new Schema({
+const colSchema = new Schema({
 	name:{
 		type:String,
 		default:''
@@ -11,7 +12,7 @@ const goodsTypeSchema = new Schema({
 		type:String,
 		default:''
 	},
-	create_at:{
+	created_at:{
 		type:Date,
 		default:Date.now
 	},
@@ -21,6 +22,5 @@ const goodsTypeSchema = new Schema({
 	}
 });
 
-const GoodsType = mongoose.model('goods_type',goodsTypeSchema);
-
-module.exports = GoodsType;
+const Col = mongoose.model('col',colSchema);
+module.exports = Col;

@@ -7,73 +7,79 @@
 const mongoose = require('mongoose');//引入mongoose插件
 mongoose.Promise = global.Promise;//使用nodejs内置的promise对象
 const Schema = mongoose.Schema;				//Schema模型架构
+const openUrl = mongoose.Schema;
 mongoose.connect('mongodb://localhost/super_shop',{
 	useMongoClient:true
 });
-const goodsTypeSchema = new Schema({
-	name:{
-		type:String,
-		default:''
-	},
-	description:{
-		type:String,
-		default:''
-	},
-	create_at:{
-		type:Date,
-		default:Date.now
-	},
-	updated_at:{
-		type:Date,
-		default:Date.now
-	}
-});
 
-
-
-const goodsSchema = new Schema({
-  name:{
-    type:String,
-    default:''
-  },
-  price:{
-    type:Number,
-    default:''
-  },
-  description:{
-    type:String,
-    default:''
-  },
-  store_count:{
-  type:Number,
-  default:0
-  },
-  content:{
-    type:String,
-    default:''
-  },
-  goods_type:{
-    type:Schema.Types.ObjectId,//分类id
-    ref:'goods_type'//关联的模型，在创建模型（model)时候的参数：模型的名字
-  }
-});
-
-goodsSchema.statics.findByName = function(name,cb){
-	this.find({name:name})
-		.then(data=>{
-			cb(data)
-		})
-		.catch(err=>{
-			console.log(err)
-			cb({})
-		})
+module.exports = {
+	mongoose:mongoose,
+	Schema: Schema
 }
+// const goodsTypeSchema = new Schema({
+// 	name:{
+// 		type:String,
+// 		default:''
+// 	},
+// 	description:{
+// 		type:String,
+// 		default:''
+// 	},
+// 	create_at:{
+// 		type:Date,
+// 		default:Date.now
+// 	},
+// 	updated_at:{
+// 		type:Date,
+// 		default:Date.now
+// 	}
+// });
 
-const Goods = mongoose.model('goods',goodsSchema);
-Goods.findByName('iphone 8',function(r){
-	console.log(r);
-})
-// 通过populated实现表关联查询
+
+
+// const goodsSchema = new Schema({
+//   name:{
+//     type:String,
+//     default:''
+//   },
+//   price:{
+//     type:Number,
+//     default:''
+//   },
+//   description:{
+//     type:String,
+//     default:''
+//   },
+//   store_count:{
+//   type:Number,
+//   default:0
+//   },
+//   content:{
+//     type:String,
+//     default:''
+//   },
+//   goods_type:{
+//     type:Schema.Types.ObjectId,//分类id
+//     ref:'goods_type'//关联的模型，在创建模型（model)时候的参数：模型的名字
+//   }
+// });
+
+// goodsSchema.statics.findByName = function(name,cb){
+// 	this.find({name:name})
+// 		.then(data=>{
+// 			cb(data)
+// 		})
+// 		.catch(err=>{
+// 			console.log(err)
+// 			cb({})
+// 		})
+// }
+
+// const Goods = mongoose.model('goods',goodsSchema);
+// Goods.findByName('iphone 8',function(r){
+// 	console.log(r);
+// })
+// // 通过populated实现表关联查询
 // Goods.find({}).populate('goods_type')
 // 	.then(res=>{
 // 		console.log(res)
@@ -112,4 +118,7 @@ Goods.findByName('iphone 8',function(r){
 // 		console.log('保存成功')
 // 	}
 // })
+
+
+
 
