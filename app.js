@@ -29,8 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 使用自定义路由模块
 app.use('/', index);
 app.use('/users', users);
-app.use('/admin/rows',require('./routes/admin/admin_row'))
-app.use('/admin/cols',require('./routes/admin/admin_col'))
+app.use('/admin/rows',require('./routes/admin/admin_row'));
+app.use('/admin/cols',require('./routes/admin/admin_col'));
+app.use('/admin/main',require('./routes/admin/main'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
