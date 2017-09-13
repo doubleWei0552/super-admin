@@ -20,7 +20,7 @@
 					
 						<div class="form-group">
 							<label for="">姓名</label>
-							<input type="text" class="form-control" id="" placeholder="请输入姓名">
+							<input name="name" type="text" class="form-control" id="" placeholder="请输入姓名">
 						</div>
 					
 						<div class="form-group">
@@ -33,23 +33,18 @@
 
 						 <div class="form-group">
                         <label for="">行：</label>
-                        <select class="form-control" name="row">
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
+                        <select class="form-control" name="row_id">
+													<% rowList.forEach(function(item){%>
+														<option value="<%= item.id %>"><%= item.name %></option>
+													<% }) %>
 												</select>
                     </div>
                     <div class="form-group">
                         <label for="">列：</label>
-                        <select class="form-control" name="col">
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
+                        <select class="form-control" name="col_id">
+													<% colList.forEach(function(item){%>
+														<option value="<%= item.id %>"><%= item.name %></option>
+													<% }) %>
 												</select>
                     </div>
 

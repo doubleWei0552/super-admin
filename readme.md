@@ -10,3 +10,8 @@ npm start      # 启动项目，项目的启动信息配置在package.json文件
     #在package.json文件的script节点中配置的属性名可以通过 npm run 运行
     # start节点可以不加run
 ```
+
+# ngrok外网映射
+```bash
+#通过ngrok插件可以把本机的端口映射一个外网地址
+ngrok http 端口号 # 进入所在文件夹，运行命令

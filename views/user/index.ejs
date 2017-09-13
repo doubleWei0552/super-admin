@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">座次表</h3>
+				</div>
+				<div class="panel-body">
+					
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>排/号</th>
+								<% colList.forEach(function(c){%> 
+									<th><%= c.name %></th>
+								<%}) %>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<% rowList.forEach(function(r){%>
+									<tr>
+										<td><%= r.name %></td>
+										<% colList.forEach(function(c){%>
+										<% const temUser = users.find(u=>{
+											return u.row_id == r.id && u.col_id == c.id
+										}) %>
+											<td><%= temUser?temUser.name:'' %></td>
+										<%}) %>
+									</tr>
+								<%}) %>
+								
+						</tbody>
+					</table>
+					
+				</div>
+		</div>
+		
+	</div>
+</body>
+</html>
