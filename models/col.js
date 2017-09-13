@@ -1,5 +1,5 @@
 // 列信息
-const db = reuquire('../db');
+const db = require('../db');
 const mongoose = db.mongoose;
 const Schema = db.Schema;
 

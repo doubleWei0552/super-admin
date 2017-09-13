@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/admin/rows',require('./routes/admin/admin_row'))
+app.use('/admin/cols',require('./routes/admin/admin_col'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
